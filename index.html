@@ -10,7 +10,7 @@
 
   <script>
 
-  console.log("Update 12")
+  console.log("Update 13")
   AFRAME.registerComponent('registerevents', {
   		init: function () {
   			var marker = this.el;
@@ -36,9 +36,9 @@
 
   <body style="margin : 0px; overflow: hidden;">
     <a-scene embedded arjs>
-      <a-marker-camera type="pattern" url='111_main_pattern.patt'  emitevents="true" id="anchor" registerevents >
-      </a-marker-camera>
-
+      <a-marker type="pattern" preset='custom' url='./111_main_pattern.patt'  emitevents="true" id="anchor" registerevents >
+      </a-marker>
+      <a-entity camera></a-entity>
     </a-scene>
   </body>
 
