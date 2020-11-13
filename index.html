@@ -10,7 +10,7 @@
 
   <script>
 
-  console.log("Update 24")
+  console.log("Update 25")
   AFRAME.registerComponent('registerevents', {
   		init: function () {
   			var marker = this.el;
@@ -20,7 +20,7 @@
   				console.log('markerFound', markerId);
   				// TODO: Add your own code here to react to the marker being found.
           alert("Marker Found!");
-          window.open("https://dboxpenn2.s3.amazonaws.com/current/tour.html?startscene=1&startactions=lookat(2.37,2.95,100,0,0)","_self");
+          window.open("https://dboxtest.s3.amazonaws.com/autogyro/tour.html?startscene=1&startactions=lookat(2.37,2.95,100,0,0)","_self");
   			});
 
   			marker.addEventListener('markerLost', function() {
