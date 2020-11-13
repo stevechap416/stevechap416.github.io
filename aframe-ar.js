@@ -5079,12 +5079,12 @@ AFRAME.registerComponent('arjs-anchor', {
                     changeMatrixMode: 'modelViewMatrix',
                     barcodeValue: _this.data.barcodeValue,
                     markersAreaEnabled: false
-                } else if (_this.data.preset === 'custom') {
-		                markerParameters.type = 'pattern'
-		                markerParameters.patternUrl = _this.data.patternUrl;
-		                markerParameters.markersAreaEnabled = false
-		            }
-            } else if (_this.data.type === 'pattern') {
+                }
+            } else if (_this.data.preset === 'custom') {
+								markerParameters.type = 'pattern'
+								markerParameters.patternUrl = _this.data.patternUrl;
+								markerParameters.markersAreaEnabled = false
+						} else if (_this.data.type === 'pattern') {
                 markerParameters.type = _this.data.type
                 markerParameters.patternUrl = _this.data.patternUrl;
                 markerParameters.markersAreaEnabled = false
