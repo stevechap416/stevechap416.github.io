@@ -10,7 +10,7 @@
 
   <script>
 
-  console.log("Update 21")
+  console.log("Update 22")
   AFRAME.registerComponent('registerevents', {
   		init: function () {
   			var marker = this.el;
@@ -36,7 +36,7 @@
 
   <body style="margin : 0px; overflow: hidden;">
     <a-scene embedded arjs vr-mode-ui="enabled: false">
-    <a-marker preset='custom' type="pattern" url="111_main_pattern.patt" emitevents="true" id="anchor" registerevents >
+    <a-marker preset='custom' type="pattern" url="pattern-marker.patt" emitevents="true" id="anchor" registerevents >
 
            </a-marker>
            <a-entity camera></a-entity>
