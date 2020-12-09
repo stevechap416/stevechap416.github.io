@@ -10,7 +10,7 @@
 
   <script>
 
-  console.log("Update 27")
+  console.log("Update 28")
   AFRAME.registerComponent('registerevents', {
   		init: function () {s
   			var marker = this.el;
@@ -18,10 +18,17 @@
   			marker.addEventListener('markerFound', function() {
   				var markerId = marker.id;
   				console.log('markerFound', markerId);
+
+          if (markerID == "anchor") {
   				// TODO: Add your own code here to react to the marker being found.
         //  alert("Marker Found!");
           window.open("https://dboxtest.s3.amazonaws.com/autogyro/tour.html?startscene=1&startactions=lookat(2.37,2.95,100,0,0)","_self");
   			});
+
+      } else if (markerID == "anchor2") {
+        window.open("https://dboxtest.s3.amazonaws.com/autogyro/tour.html?startscene=1&startactions=lookat(90,2.95,100,0,0)","_self");
+      });
+      } else {}
 
   			marker.addEventListener('markerLost', function() {
   				var markerId = marker.id;
@@ -31,25 +38,7 @@
   		}
   	});
 
-    AFRAME.registerComponent('registerevents2', {
-        init: function () {
-          var marker = this.el;
 
-          marker.addEventListener('markerFound', function() {
-            var markerId = marker.id;
-            console.log('markerFound', markerId);
-            // TODO: Add your own code here to react to the marker being found.
-          //  alert("Marker Found!");
-            window.open("https://dboxtest.s3.amazonaws.com/autogyro/tour.html?startscene=1&startactions=lookat(90,2.95,100,0,0)","_self");
-          });
-
-          marker.addEventListener('markerLost', function() {
-            var markerId = marker.id;
-            console.log('markerLost', markerId);
-            // TODO: Add your own code here to react to the marker being lost.
-          });
-        }
-      });
 
 
   </script>
@@ -61,7 +50,7 @@
       <a-marker preset='custom' type="pattern" url="pattern-Main_111_Murray_3.patt" emitevents="true" id="anchor" registerevents >
       </a-marker>
 
-      <a-marker preset='hiro' emitevents="true" id="anchor" registerevents2 >
+      <a-marker preset='hiro' emitevents="true" id="anchor2" registerevents>
       </a-marker>
 
      <a-entity camera></a-entity>
