@@ -9,8 +9,10 @@
   <script src="aframe-ar.js"></script>
 
   <script>
+  console.log("*************")
+  console.log("Update 29")
+  console.log("*************")
 
-  console.log("Update 28")
   AFRAME.registerComponent('registerevents', {
   		init: function () {s
   			var marker = this.el;
@@ -23,12 +25,15 @@
   				// TODO: Add your own code here to react to the marker being found.
         //  alert("Marker Found!");
           window.open("https://dboxtest.s3.amazonaws.com/autogyro/tour.html?startscene=1&startactions=lookat(2.37,2.95,100,0,0)","_self");
+
+        } else if (markerID == "anchor2") {
+          window.open("https://dboxtest.s3.amazonaws.com/autogyro/tour.html?startscene=1&startactions=lookat(90,2.95,100,0,0)","_self");
+
+        } else {}
+
   			});
 
-      } else if (markerID == "anchor2") {
-        window.open("https://dboxtest.s3.amazonaws.com/autogyro/tour.html?startscene=1&startactions=lookat(90,2.95,100,0,0)","_self");
-      });
-      } else {}
+
 
   			marker.addEventListener('markerLost', function() {
   				var markerId = marker.id;
