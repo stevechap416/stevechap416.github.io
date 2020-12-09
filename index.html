@@ -10,15 +10,15 @@
 
   <script>
   console.log("*************")
-  console.log("Update 34")
+  console.log("Update 35")
   console.log("*************")
 
-  var markerId;
+
 
   AFRAME.registerComponent('registerevents', {
   		init: function () {
   			var marker = this.el;
-        markerId = marker.id;
+        var markerId = marker.id;
 
   			marker.addEventListener('markerFound', function() {
 
