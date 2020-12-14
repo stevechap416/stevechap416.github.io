@@ -29,18 +29,14 @@
      width: 4em;
      height: 2em;
    }
-  a-scene{
-    margin-top:25px;
-  }
 
-  #arjs-video{
-    margin-top:-500px;
-  }
+
+
   </style>
   <script>
   //So I can see in the console log if the updated version is running...
   console.log("*************")
-  console.log("Update 40")
+  console.log("Update 41")
   console.log("*************")
 
 
@@ -117,13 +113,16 @@
   //Have to have a button somewhere to start the compass on iOS
   function init() {
     startBtn.addEventListener("click", startCompass);
+    console.log("Init function started...")
   }
 
   function startCompass() {
+    console.log("Button Pressed...")
     if (isIOS) {
       DeviceOrientationEvent.requestPermission()
         .then((response) => {
           if (response === "granted") {
+            console.log("iOS permission granted...")
             window.addEventListener("deviceorientation", handler, true);
           } else {
             alert("has to be allowed!");
