@@ -8,6 +8,11 @@
   <!-- we import arjs version without NFT but with marker + location based support -->
   <script src="aframe-ar.js"></script>
   <style>
+
+  body {
+    background-color: black;
+  }
+
   .buttons {
      position: absolute;
      bottom: 0;
@@ -47,12 +52,8 @@
   <script>
   //So I can see in the console log if the updated version is running...
   console.log("*************")
-  console.log("Update 75")
+  console.log("Update 76")
   console.log("*************")
-
-
-
-
 
   //Multiple Trackers
   AFRAME.registerComponent('registerevents', {
@@ -67,7 +68,7 @@
           if (markerId == "anchor") {
   				// TODO: Add your own code here to react to the marker being found.
         //  alert("Marker Found!");
-          updatedURL = "https://dboxtest.s3.amazonaws.com/autogyro/tour.html?startscene=1&startactions=lookat(" + finalHeading.toString() + ",2.95,100,0,0)";
+          updatedURL = "tour.html?startscene=1&startactions=lookat(" + finalHeading.toString() + ",2.95,100,0,0)";
           console.log(updatedURL);
           window.open(updatedURL,"_self");
 
@@ -76,6 +77,9 @@
           const cameraFeed = document.querySelector("#arjs-video");
           const aframeScene = document.querySelector("#aframeScene")
           const krPano = document.querySelector("#krpano")
+
+          updatedURL = "tour.html?startscene=1&startactions=lookat(" + finalHeading.toString() + ",2.95,100,0,0)";
+          krPano.src = updatedURL
           cameraFeed.style.display = "none";
           aframeScene.style.display = "none";
           krPano.style.display = "block";
@@ -124,7 +128,6 @@
     magnetometer; gyroscope https://dboxtest.s3.amazonaws.com; autoplay;" allowfullscreen
     mozallowfullscreen="true"
     webkitallowfullscreen="true">
-
   </iframe>
 
   </body>
