@@ -70,6 +70,9 @@
             const cameraFeed = document.querySelector("#arjs-video");
             const aframeScene = document.querySelector("#aframeScene")
             const krPano = document.querySelector("#krpano")
+            
+            //Turn off compass now.
+            runCompass = false;
 
             updatedURL = "tour.html?startscene=1&startactions=lookat(" + finalHeading.toString() + ",2.95,100,0,0)";
             krPano.src = updatedURL
@@ -82,6 +85,9 @@
             const cameraFeed = document.querySelector("#arjs-video");
             const aframeScene = document.querySelector("#aframeScene")
             const krPano = document.querySelector("#krpano")
+
+            //Turn off compass now.
+            runCompass = false;
 
             updatedURL = "tour.html?startscene=1&startactions=lookat(" + finalHeading.toString() + ",2.95,100,0,0)";
             krPano.src = updatedURL
@@ -145,6 +151,8 @@
   let adjustment = -20; //For magnetic north adjustment to city grid etc.
   let finalHeading;
 
+  let runCompass = true;
+
   const isIOS = (
   navigator.userAgent.match(/(iPod|iPhone|iPad)/) &&
   navigator.userAgent.match(/AppleWebKit/)
@@ -180,23 +188,25 @@
 const compassDisplay = document.querySelector("#compass-data");
 
   function handler(e) {
-    compass = e.webkitCompassHeading;
+    while (runCompass == true) {
+      compass = e.webkitCompassHeading;
 
-    finalHeading = compass + adjustment;
+      finalHeading = compass + adjustment;
 
-    if (finalHeading > 360) {
-      finalHeading = finalHeading - 360;
+      if (finalHeading > 360) {
+        finalHeading = finalHeading - 360;
+      }
+
+      if (finalHeading < 0) {
+        finalHeading = 360 - Math.abs(finalHeading);
+      }
+
+      compassDisplay.innerHTML = finalHeading.toString();
+      /*console.log("Compass Heading:");
+      console.log(compass);
+      console.log("Adjusted Heading:");
+      console.log(finalHeading);*/
     }
-
-    if (finalHeading < 0) {
-      finalHeading = 360 - Math.abs(finalHeading);
-    }
-
-    compassDisplay.innerHTML = finalHeading.toString();
-    console.log("Compass Heading:");
-    console.log(compass);
-    console.log("Adjusted Heading:");
-    console.log(finalHeading);
   }
 
   init();
