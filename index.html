@@ -9,12 +9,50 @@
   <script src="aframe-ar.js"></script>
 
   <script>
+  //So I can see in the console log if the updated version is running...
   console.log("*************")
-  console.log("Update 35")
+  console.log("Update 36")
   console.log("*************")
 
 
+  //Compass Section
+  let compass;
+  const isIOS = !(
+  navigator.userAgent.match(/(iPod|iPhone|iPad)/) &&
+  navigator.userAgent.match(/AppleWebKit/)
+  );
 
+  //Have to have a button somewhere to start the compass on iOS
+  function init() {
+    startBtn.addEventListener("click", startCompass);
+  }
+
+  function startCompass() {
+    if (isIOS) {
+      DeviceOrientationEvent.requestPermission()
+        .then((response) => {
+          if (response === "granted") {
+            window.addEventListener("deviceorientation", handler, true);
+          } else {
+            alert("has to be allowed!");
+          }
+        })
+        .catch(() => alert("not supported"));
+    } else {
+      window.addEventListener("deviceorientationabsolute", handler, true);
+    }
+  }
+
+  function handler(e) {
+    compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
+    console.log("Compass:");
+    console.log(compass);
+  }
+
+  init();
+
+
+  //Multiple Trackers
   AFRAME.registerComponent('registerevents', {
   		init: function () {
   			var marker = this.el;
@@ -53,6 +91,7 @@
 
 
   <body style="margin : 0px; overflow: hidden;">
+    <button class="start-btn">Start compass</button>
     <a-scene embedded arjs vr-mode-ui="enabled: false">
 
       <a-marker preset='custom' type="pattern" url="pattern-Main_111_Murray_3.patt" emitevents="true" id="anchor" registerevents >
