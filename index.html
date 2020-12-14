@@ -80,6 +80,9 @@
             aframeScene.style.display = "none";
             krPano.style.display = "block";
 
+            delete AFRAME.components['anchor'];
+            delete AFRAME.components['anchor2'];
+
         } else if (markerId == "anchor2") {
             //window.open("https://dboxtest.s3.amazonaws.com/autogyro/tour.html?startscene=1&startactions=lookat(90,2.95,100,0,0)","_self");
             const cameraFeed = document.querySelector("#arjs-video");
@@ -135,8 +138,8 @@
 
 
   <iframe id="krpano" src="tour.html?startscene=1&startactions=lookat(90,2.95,100,0,0)"
-    frameborder="0" allowvr="yes" allow="vr; xr; accelerometer https://dboxtest.s3.amazonaws.com;
-    magnetometer; gyroscope https://dboxtest.s3.amazonaws.com; autoplay;" allowfullscreen
+    frameborder="0" allowvr="yes" allow="vr; xr; accelerometer;
+    magnetometer; gyroscope; autoplay;" allowfullscreen
     mozallowfullscreen="true"
     webkitallowfullscreen="true">
   </iframe>
