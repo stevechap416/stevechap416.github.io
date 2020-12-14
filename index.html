@@ -41,7 +41,7 @@
   <script>
   //So I can see in the console log if the updated version is running...
   console.log("*************")
-  console.log("Update 49")
+  console.log("Update 50")
   console.log("*************")
 
 
@@ -145,9 +145,12 @@
     }
   }
 
+const compassDisplay = document.querySelector("#compass-data");
+
   function handler(e) {
     compass = e.webkitCompassHeading;
-    document.getElementByID("compass-data").innerHTML = compass.toString();
+
+    compassDisplay.innerHTML = compass.toString();
     console.log("Compass Heading:");
     console.log(compass);
   }
