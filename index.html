@@ -52,7 +52,7 @@
   <script>
   //So I can see in the console log if the updated version is running...
   console.log("*************")
-  console.log("Update 76")
+  console.log("Update 77")
   console.log("*************")
 
   //Multiple Trackers
@@ -66,23 +66,28 @@
   				console.log('markerFound', markerId);
 
           if (markerId == "anchor") {
-  				// TODO: Add your own code here to react to the marker being found.
-        //  alert("Marker Found!");
-          updatedURL = "tour.html?startscene=1&startactions=lookat(" + finalHeading.toString() + ",2.95,100,0,0)";
-          console.log(updatedURL);
-          window.open(updatedURL,"_self");
+            //window.open("https://dboxtest.s3.amazonaws.com/autogyro/tour.html?startscene=1&startactions=lookat(90,2.95,100,0,0)","_self");
+            const cameraFeed = document.querySelector("#arjs-video");
+            const aframeScene = document.querySelector("#aframeScene")
+            const krPano = document.querySelector("#krpano")
+
+            updatedURL = "tour.html?startscene=1&startactions=lookat(" + finalHeading.toString() + ",2.95,100,0,0)";
+            krPano.src = updatedURL
+            cameraFeed.style.display = "none";
+            aframeScene.style.display = "none";
+            krPano.style.display = "block";
 
         } else if (markerId == "anchor2") {
-          //window.open("https://dboxtest.s3.amazonaws.com/autogyro/tour.html?startscene=1&startactions=lookat(90,2.95,100,0,0)","_self");
-          const cameraFeed = document.querySelector("#arjs-video");
-          const aframeScene = document.querySelector("#aframeScene")
-          const krPano = document.querySelector("#krpano")
+            //window.open("https://dboxtest.s3.amazonaws.com/autogyro/tour.html?startscene=1&startactions=lookat(90,2.95,100,0,0)","_self");
+            const cameraFeed = document.querySelector("#arjs-video");
+            const aframeScene = document.querySelector("#aframeScene")
+            const krPano = document.querySelector("#krpano")
 
-          updatedURL = "tour.html?startscene=1&startactions=lookat(" + finalHeading.toString() + ",2.95,100,0,0)";
-          krPano.src = updatedURL
-          cameraFeed.style.display = "none";
-          aframeScene.style.display = "none";
-          krPano.style.display = "block";
+            updatedURL = "tour.html?startscene=1&startactions=lookat(" + finalHeading.toString() + ",2.95,100,0,0)";
+            krPano.src = updatedURL
+            cameraFeed.style.display = "none";
+            aframeScene.style.display = "none";
+            krPano.style.display = "block";
 
         } else {}
 
