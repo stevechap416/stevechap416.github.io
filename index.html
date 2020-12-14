@@ -36,7 +36,7 @@
   <script>
   //So I can see in the console log if the updated version is running...
   console.log("*************")
-  console.log("Update 41")
+  console.log("Update 42")
   console.log("*************")
 
 
@@ -122,7 +122,7 @@
       DeviceOrientationEvent.requestPermission()
         .then((response) => {
           if (response === "granted") {
-            console.log("iOS permission granted...")
+            console.log("iOS permission granted...");
             window.addEventListener("deviceorientation", handler, true);
           } else {
             alert("has to be allowed!");
@@ -130,13 +130,14 @@
         })
         .catch(() => alert("not supported"));
     } else {
+      console.log("Device is not iOS...");
       window.addEventListener("deviceorientationabsolute", handler, true);
     }
   }
 
   function handler(e) {
     compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
-    console.log("Compass:");
+    console.log("Compass Heading:");
     console.log(compass);
   }
 
