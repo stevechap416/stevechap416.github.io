@@ -35,13 +35,13 @@
      color:white;
    }
 
-
+   a-scene{}
 
   </style>
   <script>
   //So I can see in the console log if the updated version is running...
   console.log("*************")
-  console.log("Update 61")
+  console.log("Update 62")
   console.log("*************")
 
 
@@ -66,7 +66,9 @@
           window.open(updatedURL,"_self");
 
         } else if (markerId == "anchor2") {
-          window.open("https://dboxtest.s3.amazonaws.com/autogyro/tour.html?startscene=1&startactions=lookat(90,2.95,100,0,0)","_self");
+          //window.open("https://dboxtest.s3.amazonaws.com/autogyro/tour.html?startscene=1&startactions=lookat(90,2.95,100,0,0)","_self");
+          const cameraFeed = document.querySelector("#arjs-video");
+          cameraFeed.style.display = "none";
 
         } else {}
 
