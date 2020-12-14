@@ -36,7 +36,7 @@
   <script>
   //So I can see in the console log if the updated version is running...
   console.log("*************")
-  console.log("Update 45")
+  console.log("Update 46")
   console.log("*************")
 
 
@@ -138,7 +138,7 @@
   }
 
   function handler(e) {
-    compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
+    compass = e.webkitCompassHeading;
     console.log("Compass Heading:");
     console.log(compass);
   }
