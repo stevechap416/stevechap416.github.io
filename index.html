@@ -11,45 +11,11 @@
   <script>
   //So I can see in the console log if the updated version is running...
   console.log("*************")
-  console.log("Update 36")
+  console.log("Update 37")
   console.log("*************")
 
 
-  //Compass Section
-  let compass;
-  const isIOS = !(
-  navigator.userAgent.match(/(iPod|iPhone|iPad)/) &&
-  navigator.userAgent.match(/AppleWebKit/)
-  );
 
-  //Have to have a button somewhere to start the compass on iOS
-  function init() {
-    startBtn.addEventListener("click", startCompass);
-  }
-
-  function startCompass() {
-    if (isIOS) {
-      DeviceOrientationEvent.requestPermission()
-        .then((response) => {
-          if (response === "granted") {
-            window.addEventListener("deviceorientation", handler, true);
-          } else {
-            alert("has to be allowed!");
-          }
-        })
-        .catch(() => alert("not supported"));
-    } else {
-      window.addEventListener("deviceorientationabsolute", handler, true);
-    }
-  }
-
-  function handler(e) {
-    compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
-    console.log("Compass:");
-    console.log(compass);
-  }
-
-  init();
 
 
   //Multiple Trackers
@@ -113,6 +79,45 @@
     </a-scene>
   -->
   </body>
+
+  <script>
+  //Compass Section
+  let compass;
+  const isIOS = !(
+  navigator.userAgent.match(/(iPod|iPhone|iPad)/) &&
+  navigator.userAgent.match(/AppleWebKit/)
+  );
+
+  //Have to have a button somewhere to start the compass on iOS
+  function init() {
+    startBtn.addEventListener("click", startCompass);
+  }
+
+  function startCompass() {
+    if (isIOS) {
+      DeviceOrientationEvent.requestPermission()
+        .then((response) => {
+          if (response === "granted") {
+            window.addEventListener("deviceorientation", handler, true);
+          } else {
+            alert("has to be allowed!");
+          }
+        })
+        .catch(() => alert("not supported"));
+    } else {
+      window.addEventListener("deviceorientationabsolute", handler, true);
+    }
+  }
+
+  function handler(e) {
+    compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
+    console.log("Compass:");
+    console.log(compass);
+  }
+
+  init();
+
+  </script>
 
 
 </html>
