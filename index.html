@@ -52,7 +52,7 @@
   <script>
   //So I can see in the console log if the updated version is running...
   console.log("*************")
-  console.log("Update 77")
+  console.log("Update 78")
   console.log("*************")
 
   //Multiple Trackers
@@ -70,7 +70,7 @@
             const cameraFeed = document.querySelector("#arjs-video");
             const aframeScene = document.querySelector("#aframeScene")
             const krPano = document.querySelector("#krpano")
-            
+
             //Turn off compass now.
             runCompass = false;
 
@@ -188,7 +188,7 @@
 const compassDisplay = document.querySelector("#compass-data");
 
   function handler(e) {
-    while (runCompass == true) {
+
       compass = e.webkitCompassHeading;
 
       finalHeading = compass + adjustment;
@@ -199,7 +199,7 @@ const compassDisplay = document.querySelector("#compass-data");
 
       if (finalHeading < 0) {
         finalHeading = 360 - Math.abs(finalHeading);
-      }
+
 
       compassDisplay.innerHTML = finalHeading.toString();
       /*console.log("Compass Heading:");
