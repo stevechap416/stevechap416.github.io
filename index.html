@@ -37,11 +37,16 @@
 
    a-scene{}
 
+     #krpano {
+       width:100%;
+       height:100%;
+     }
+
   </style>
   <script>
   //So I can see in the console log if the updated version is running...
   console.log("*************")
-  console.log("Update 63")
+  console.log("Update 64")
   console.log("*************")
 
 
@@ -68,7 +73,9 @@
         } else if (markerId == "anchor2") {
           //window.open("https://dboxtest.s3.amazonaws.com/autogyro/tour.html?startscene=1&startactions=lookat(90,2.95,100,0,0)","_self");
           const cameraFeed = document.querySelector("#arjs-video");
+          const aframeScene = document.querySelector("#aframeScene")
           cameraFeed.style.display = "none";
+          aframeScene.style.display = "none";
 
         } else {}
 
@@ -97,7 +104,7 @@
       <p id="compass-data">0</p>
     </div>
 
-    <a-scene embedded arjs vr-mode-ui="enabled: false">
+    <a-scene embedded arjs vr-mode-ui="enabled: false" id="aframeScene">
 
       <a-marker preset='custom' type="pattern" url="pattern-Main_111_Murray_3.patt" emitevents="true" id="anchor" registerevents >
       </a-marker>
@@ -108,11 +115,12 @@
      <a-entity camera></a-entity>
   </a-scene>
 
-  <iframe src="https://dboxtest.s3.amazonaws.com/autogyro/tour.html?startscene=1&startactions=lookat(90,2.95,100,0,0)"
+  <iframe id="krpano" src="https://dboxtest.s3.amazonaws.com/autogyro/tour.html?startscene=1&startactions=lookat(90,2.95,100,0,0)"
     frameborder="0" allowvr="yes" allow="vr; xr; accelerometer;
     magnetometer; gyroscope; autoplay;" allowfullscreen
     mozallowfullscreen="true"
     webkitallowfullscreen="true">
+
   </iframe>
 
   </body>
