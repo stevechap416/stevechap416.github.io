@@ -7,11 +7,16 @@
 
   <!-- we import arjs version without NFT but with marker + location based support -->
   <script src="aframe-ar.js"></script>
-
+  <style>
+  .startBtn {
+    position: absolute;
+    z-index: 999999;
+  }
+  </style>
   <script>
   //So I can see in the console log if the updated version is running...
   console.log("*************")
-  console.log("Update 37")
+  console.log("Update 38")
   console.log("*************")
 
 
@@ -69,19 +74,12 @@
      <a-entity camera></a-entity>
   </a-scene>
 
-
-
-    <!--
-    <a-scene embedded arjs>
-      <a-marker-camera type="pattern" preset='custom' Url='111_main_pattern.patt'  emitevents="true" id="anchor" registerevents >
-      </a-marker>
-      <a-entity camera></a-entity>
-    </a-scene>
-  -->
   </body>
 
   <script>
   //Compass Section
+  const startBtn = document.querySelector(".start-btn");
+
   let compass;
   const isIOS = !(
   navigator.userAgent.match(/(iPod|iPhone|iPad)/) &&
