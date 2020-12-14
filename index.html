@@ -41,7 +41,7 @@
   <script>
   //So I can see in the console log if the updated version is running...
   console.log("*************")
-  console.log("Update 56")
+  console.log("Update 57")
   console.log("*************")
 
 
@@ -160,7 +160,7 @@ const compassDisplay = document.querySelector("#compass-data");
     }
 
     if (finalHeading < 0) {
-      finalHeading = 360 - Math.abs(finalheading);
+      finalHeading = 360 - Math.abs(finalHeading);
     }
 
     compassDisplay.innerHTML = finalHeading.toString();
