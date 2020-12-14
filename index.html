@@ -41,7 +41,7 @@
   <script>
   //So I can see in the console log if the updated version is running...
   console.log("*************")
-  console.log("Update 59")
+  console.log("Update 61")
   console.log("*************")
 
 
@@ -61,7 +61,7 @@
           if (markerId == "anchor") {
   				// TODO: Add your own code here to react to the marker being found.
         //  alert("Marker Found!");
-          updatedURL = "https://dboxtest.s3.amazonaws.com/autogyro/tour.html?startscene=1&startactions=lookat(" + compass.toString() + ",2.95,100,0,0)";
+          updatedURL = "https://dboxtest.s3.amazonaws.com/autogyro/tour.html?startscene=1&startactions=lookat(" + finalHeading.toString() + ",2.95,100,0,0)";
           console.log(updatedURL);
           window.open(updatedURL,"_self");
 
@@ -113,7 +113,7 @@
   const startBtn = document.querySelector(".start-btn");
 
   let compass;
-  let adjustment = -50; //For magnetic north adjustment to city grid etc.
+  let adjustment = -20; //For magnetic north adjustment to city grid etc.
   let finalHeading;
 
   const isIOS = (
