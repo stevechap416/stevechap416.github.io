@@ -52,7 +52,7 @@
   <script>
   //So I can see in the console log if the updated version is running...
   console.log("*************")
-  console.log("Update 83")
+  console.log("Update 84")
   console.log("*************")
 
   //Multiple Trackers
@@ -70,6 +70,7 @@
             const cameraFeed = document.querySelector("#arjs-video");
             const aframeScene = document.querySelector("#aframeScene")
             const krPano = document.querySelector("#krpano")
+            const buttons = document.querySelector(".buttons")
 
             //Turn off compass now.
             runCompass = false;
@@ -79,6 +80,7 @@
             cameraFeed.style.display = "none";
             aframeScene.style.display = "none";
             krPano.style.display = "block";
+            buttons.style.display="none";
 
             delete AFRAME.components['registerevents'];
 
@@ -88,6 +90,7 @@
             const cameraFeed = document.querySelector("#arjs-video");
             const aframeScene = document.querySelector("#aframeScene")
             const krPano = document.querySelector("#krpano")
+            const buttons = document.querySelector(".buttons")
 
             //Turn off compass now.
             runCompass = false;
@@ -97,6 +100,9 @@
             cameraFeed.style.display = "none";
             aframeScene.style.display = "none";
             krPano.style.display = "block";
+            buttons.style.display="none";
+
+            delete AFRAME.components['registerevents'];
 
         } else {}
 

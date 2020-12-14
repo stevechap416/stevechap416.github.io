@@ -131,7 +131,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
  />
 
  <action name="gyro_available_info">
-				 set(layer[gyrobutton].visible, true);
+				 set(layer[gyrobutton].visible, false);
  </action>
 
  <action name="gyro_not_available_info" >
