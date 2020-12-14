@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget
+xmlns="http://www.w3.org/ns/widgets"
+xmlns:gap="http://phonegap.com/ns/1.0"
+id="com.dbox.Penn2"
+versionCode="1.0"
+version="1.0.0">
+    <name>PENN2 Experience</name>
+    <description>
+        Virtual Tour of PENN2
+    </description>
+    <author email="steve.chappell@dbox.com" href="http://dbox.com">
+        Steve Chappell
+    </author>
+    <platform name="android"/>
+    <preference name="fullscreen" value="true"/>
+    <preference name="phonegap-version" value="cli-6.5.0" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+
+ <platform name="android">
+	<icon density="ldpi" src="res/icons/android/drawable-ldpi-icon.png" />
+	<icon density="mdpi" src="res/icons/android/drawable-mdpi-icon.png" />
+	<icon density="hdpi" src="res/icons/android/drawable-hdpi-icon.png" />
+	<icon density="xhdpi" src="res/icons/android/drawable-xhdpi-icon.png" />
+	<icon density="xxhdpi" src="res/icons/android/drawable-xxhdpi-icon.png" />
+	<icon density="xxxhdpi" src="res/icons/android/drawable-xxxhdpi-icon.png" />
+	<splash density="land-ldpi" src="res/screens/android/drawable-land-ldpi-screen.png" />
+	<splash density="land-mdpi" src="res/screens/android/drawable-land-mdpi-screen.png" />
+	<splash density="land-hdpi" src="res/screens/android/drawable-land-hdpi-screen.png" />
+	<splash density="land-xhdpi" src="res/screens/android/drawable-land-xhdpi-screen.png" />
+	<splash density="land-xxhdpi" src="res/screens/android/drawable-land-xxhdpi-screen.png" />
+	<splash density="land-xxxhdpi" src="res/screens/android/drawable-land-xxxhdpi-screen.png" />
+	<splash density="port-ldpi" src="res/screens/android/drawable-port-ldpi-screen.png" />
+	<splash density="port-mdpi" src="res/screens/android/drawable-port-mdpi-screen.png" />
+	<splash density="port-hdpi" src="res/screens/android/drawable-port-hdpi-screen.png" />
+	<splash density="port-xhdpi" src="res/screens/android/drawable-port-xhdpi-screen.png" />
+	<splash density="port-xxhdpi" src="res/screens/android/drawable-port-xxhdpi-screen.png" />
+	<splash density="port-xxxhdpi" src="res/screens/android/drawable-port-xxxhdpi-screen.png" />
+</platform>
+
+    <plugin name="cordova-plugin-hidden-statusbar-overlay" spec="https://github.com/katzer/cordova-plugin-hidden-statusbar-overlay" />
+
+
+</widget>

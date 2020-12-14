@@ -1,0 +1,224 @@
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+PENN 2 VR Experience
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Built upon KRPano. Customized at DBOX NYC
+Renderings and graphic elements produced at DBOX NYC
+www.dbox.com
+2019/2020
+steve.chappell@dbox.com
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Version Notes:
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+V1.0 (12/05/19)
+1.  First fully combined version.
+V1.1 (12/30/19)
+1.  All placeholder nodes are present.
+2.  General code cleanup.
+3.  Added back button for a back button on the directory page.
+4.  Added smoother transitions for the still image drawers.
+5.  Still iamge drawer maintains state across panos. (Stays open once open.)
+6.  Misc fixes with Panos not taking you to the correct node.
+7.  Favicon has been added.
+8.  Removed the code for the skin file that shows 'loading' at certain moments.
+V1.2 (01/23/20)
+1.  Replaced panos with newer (but still not final) panos.
+V1.3 (05/25/20)
+1.  Updated Panos.
+2.  Some adjustments to map hotspot locations.
+V1.4 (05/25/20)
+1.  Added in the cafeteria staris.
+V1.6 (08/13/20)
+1.  Major Update
+V1.7 (09/08/20)
+1.  Added new hotspot to go from the amenity lounge to the box.
+2.  Switched out main Penn 2 logo.
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+To Do:
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+1.  Need to correct all the file names.  Very inconsistent.
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Comments
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+-->
+
+<krpano version="1.20" title="Penn2 Experience">
+
+	<include url="skin/vtourskin.xml" />
+	<!-- Press T or N to load the toolbox-->
+	<!-- Should probably be removed for final delivery -->
+	<include url="toolbox/toolbox.xml" />
+
+	<!-- Customize skin settings: maps, gyro, webvr, thumbnails, tooltips, layout, design, ... -->
+	<skin_settings maps="false"
+	               maps_type="google"
+	               maps_bing_api_key=""
+	               maps_google_api_key=""
+	               maps_zoombuttons="false"
+	               maps_loadonfirstuse="true"
+	               gyro="true"
+	               gyro_keeplookingdirection="true"
+	               webvr="true"
+	               webvr_keeplookingdirection="true"
+	               webvr_prev_next_hotspots="true"
+	               littleplanetintro="false"
+	               followmousecontrol="false"
+	               title="false"
+	               thumbs="false"
+	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+	               thumbs_opened="false"
+	               thumbs_text="false"
+	               thumbs_dragging="true"
+	               thumbs_onhoverscrolling="false"
+	               thumbs_scrollbuttons="false"
+	               thumbs_scrollindicator="false"
+	               thumbs_loop="false"
+	               tooltips_buttons="true"
+	               tooltips_thumbs="true"
+	               tooltips_hotspots="true"
+	               tooltips_mapspots="false"
+	               deeplinking="true"
+	               loadscene_flags="MERGE"
+	               loadscene_blend="OPENBLEND(0.5, 0.0, 0.75, 0.05, linear)"
+	               loadscene_blend_prev="SLIDEBLEND(0.5, 180, 0.75, linear)"
+	               loadscene_blend_next="SLIDEBLEND(0.5,   0, 0.75, linear)"
+	               loadingtext="loading..."
+	               layout_width="100%"
+	               layout_maxwidth="814"
+	               controlbar_width="-24"
+	               controlbar_height="40"
+	               controlbar_offset="20"
+	               controlbar_offset_closed="-40"
+	               controlbar_overlap.no-fractionalscaling="10"
+	               controlbar_overlap.fractionalscaling="0"
+	               design_skin_images="vtourskin.png"
+	               design_bgcolor="0x2D3E50"
+	               design_bgalpha="0.8"
+	               design_bgborder="0"
+	               design_bgroundedge="1"
+	               design_bgshadow="0 4 10 0x000000 0.3"
+	               design_thumbborder_bgborder="3 0xFFFFFF 1.0"
+	               design_thumbborder_padding="2"
+	               design_thumbborder_bgroundedge="0"
+	               design_text_css="color:#FFFFFF; font-family:Arial;"
+	               design_text_shadow="1"
+								 consolelog="true"
+	               />
+
+
+
+
+
+
+ <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ _______________________________________________________________________
+ GENERIC FUNCTION FOR CHANGING ICON OPACITY
+ _______________________________________________________________________
+ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+
+
+ <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ _______________________________________________________________________
+ GYRO RELATED FUNCTIONS + LAYERS
+ _______________________________________________________________________
+ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+
+ <plugin name="gyro" devices="html5"
+				 url="./plugins/gyro2.js"
+				 enabled="true"
+				 onavailable="gyro_available_info();"
+				 onunavailable=""
+				 softstart="1"
+ />
+
+ <action name="gyro_available_info">
+				 set(layer[gyrobutton].visible, true);
+ </action>
+
+ <action name="gyro_not_available_info" >
+ </action>
+
+ <layer name="gyrobutton"
+				url="./static/icon_gyro.png"
+				scale="0.3"
+				alpha="0.6"
+				align="bottom"
+				y="10"
+				visible="false"
+				onclick="switch(plugin[gyro].enabled);toggle_gyro();"
+ />
+
+ <action name="toggle_gyro" >
+				 if(layer[gyrobutton].alpha == 0.6,set(layer[gyrobutton].alpha,1);,set(layer[gyrobutton].alpha,0.6);)
+ </action>
+
+ <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ _______________________________________________________________________
+ GENERIC MOVE ACTION TO ORIENT CAMERA
+ _______________________________________________________________________
+ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+
+<action name="Move">
+				loadscene(%1, null,KEEPPLUGINS,ZOOMBLEND(1)); lookat(%2,%3,%4);
+				<!--  hlookat,vlookat,fov
+				if(%5 == 'hello', delayedcall(1, doSomeFunction()));
+
+				%1 = scene name
+				%2 = view.hlookat
+				%3 = view.vlookat
+				%4 = view.fov
+				%5 = some extra function
+				-->
+
+
+
+				trace(%1);
+ </action>
+
+ <action name="startup" autorun="onstart">
+				 if(startscene === null OR !scene[get(startscene)], copy(startscene,scene[0].name); );
+				 loadscene(get(startscene), null, KEEPPLUGINS);
+				 if(startactions !== null, startactions() );
+				 set(layer[map].visible, false);
+ </action>
+
+
+ <!--___________________________________________________________________
+ _______________________________________________________________________
+ MAIN SPLASH SCREEN
+ _______________________________________________________________________
+ ____________________________________________________________________-->
+
+
+	<scene name="VR_07_8th_Floor_Arrival" title="VR_07_8th_Floor_Arrival" onstart="startupeighthFloor();updateradar();" thumburl="panos/VR_07_8th_Floor_Arrival.tiles/thumb.jpg" lat="" lng="" heading="">
+			<view hlookat="0" vlookat="0.0" fovtype="MFOV" fov="100" maxpixelzoom="1.0" fovmin="80" fovmax="100" limitview="auto" />
+
+			<action name="updateradar">
+							set(layer[map].visible,true);
+							set(layer[mapButton].visible,true);
+							set(layer[directoryButton].visible,true);
+							set(layer[directoryBack].visible,false);
+							set(layer[stillsButton].visible, false);
+							thumbbar_set_visible('false');
+							set(layer[radar].visible,true);
+							set(layer[activespot].parent, VR_Spot_01);
+							set(layer[radar].parent, VR_Spot_01);
+							set(layer[radar].heading, 0);
+							tween(layer[VR_Spot_01].x,1300,1);
+							tween(layer[VR_Spot_01].y,855,1);
+			</action>
+
+			<preview url="panos/VR_07_8th_Floor_Arrival.tiles/preview.jpg" />
+
+			<image>
+				<cube url="panos/VR_07_8th_Floor_Arrival.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,768,1664,3200"  />
+			</image>
+
+			<hotspot name="spot1" style="skin_hotspotstyle" ath="-19" atv="0" distorted="" onclick="returnControl();Move(VR_08_8th_Floor_Barrista,-45,0,100,hello);"/>
+			<hotspot name="spot3" style="skin_lobby_down_hotspotstyle" ath="-180" atv="4.5" distorted="" onclick="returnControl();Move(VR_06_Upper_Lobby_Lounge_Center,-90,0,100,hello);"/>
+			<hotspot name="spot4" style="skin_bustle_45_down_hotspotstyle" ath="-180" atv="0" distorted="" onclick="returnControl();Move(VR_28_4th_Floor_Center,0,0,100,hello);"/>
+			<hotspot name="spot5" style="skin_bustle_67_down_hotspotstyle" ath="-180" atv="-4.5" distorted="" onclick="returnControl();Move(VR_19_6th_Floor_Center,-90,0,100,hello);"/>
+			<hotspot name="spot7" style="skin_roof_hotspotstyle" ath="-180" atv="-9" distorted="" onclick="returnControl();Move(VR_29_Rooftop_Theater,0,0,100,hello);"/>
+	</scene>
+
+
+</krpano>
