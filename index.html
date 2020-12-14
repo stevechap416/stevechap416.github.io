@@ -41,7 +41,7 @@
   <script>
   //So I can see in the console log if the updated version is running...
   console.log("*************")
-  console.log("Update 51")
+  console.log("Update 52")
   console.log("*************")
 
 
@@ -92,7 +92,6 @@
 
     <div class="buttons">
       <button class="start-btn">Start compass</button>
-      <br>
       <p id="compass-data">0</p>
     </div>
 
@@ -114,6 +113,10 @@
   const startBtn = document.querySelector(".start-btn");
 
   let compass;
+
+  let adjustment = 70; //For magnetic north adjustment to city grid etc.
+  let finalHeading;
+
   const isIOS = (
   navigator.userAgent.match(/(iPod|iPhone|iPad)/) &&
   navigator.userAgent.match(/AppleWebKit/)
@@ -151,9 +154,15 @@ const compassDisplay = document.querySelector("#compass-data");
   function handler(e) {
     compass = e.webkitCompassHeading;
 
-    compassDisplay.innerHTML = compass.toString();
+    compass + adjustment = finalHeading
+
+    if (finalHeading > 360) {
+      finalHeading = finalHeading - 360
+    }
+
+    compassDisplay.innerHTML = finalHeading.toString();
     console.log("Compass Heading:");
-    console.log(compass);
+    console.log(finalHeading);
   }
 
   init();
