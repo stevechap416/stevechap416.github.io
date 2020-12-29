@@ -84,8 +84,8 @@
      left: 50%;
      /* bring your own prefixes */
      transform: translate(-50%, -50%);
-     width:375px;
-     height:405px;
+     width:250px;
+     height:269px;
    }
 
    @keyframes fadeIn {
@@ -98,7 +98,10 @@
 
   .overlay {
       animation: fadeIn .6s infinite alternate;
+  }
 
+  .flashing {
+    animation: fadeIn .6s infinite alternate;
   }
 
    #compass-data{
@@ -116,7 +119,7 @@
   <script>
   //So I can see in the console log if the updated version is running...
   console.log("*************")
-  console.log("Update 111")
+  console.log("Update 113")
   console.log("*************")
 
   //Multiple Trackers
@@ -204,7 +207,7 @@
   <body style="margin: 0px; overflow: hidden;">
 
     <div class="buttons">
-      <button class="startBtn">Start</button>
+      <button class="startBtn flashing">Start</button>
       <p id="compass-data">0</p>
     </div>
 
