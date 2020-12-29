@@ -36,11 +36,12 @@
    }
 
    .overlay{
-     position: absolute;
-     justify-content: center;
-     width:100%;
-     background-image:url("temp-overlay.png");
-     height:100%;
+     position: fixed;
+     background-image:url("temp-overlay-small.png");
+     top: 50%;
+     left: 50%;
+     /* bring your own prefixes */
+     transform: translate(-50%, -50%);
    }
 
    #compass-data{
@@ -58,7 +59,7 @@
   <script>
   //So I can see in the console log if the updated version is running...
   console.log("*************")
-  console.log("Update 86")
+  console.log("Update 87")
   console.log("*************")
 
   //Multiple Trackers
