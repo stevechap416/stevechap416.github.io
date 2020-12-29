@@ -96,9 +96,7 @@
     }
 
 
-  .overlay {
-      animation: fadeIn .6s infinite alternate;
-  }
+
 
   .flashing {
     animation: fadeIn .6s infinite alternate;
@@ -107,6 +105,7 @@
    #compass-data{
      font-family: sans-serif;
      color:white;
+     display:none;
    }
 
      #krpano {
@@ -119,7 +118,7 @@
   <script>
   //So I can see in the console log if the updated version is running...
   console.log("*************")
-  console.log("Update 113")
+  console.log("Update 114")
   console.log("*************")
 
   //Multiple Trackers
@@ -243,6 +242,7 @@
   //Compass Section
   const startBtn = document.querySelector(".startBtn");
   const backBtn = document.querySelector(".backBtn");
+  const overlay = document.querySelector(".overlay");
 
   let compass;
   let adjustment = -20; //For magnetic north adjustment to city grid etc.
@@ -274,6 +274,8 @@
 
   function startCompass() {
     console.log("Button Pressed...")
+    overlay.classList.add("flashing");
+
     if (isIOS) {
       DeviceOrientationEvent.requestPermission()
         .then((response) => {
@@ -307,7 +309,8 @@ const compassDisplay = document.querySelector("#compass-data");
         finalHeading = 360 - Math.abs(finalHeading);
       }
 
-      compassDisplay.innerHTML = finalHeading.toString();
+      //compassDisplay.innerHTML = finalHeading.toString();
+
       /*console.log("Compass Heading:");
       console.log(compass);
       console.log("Adjusted Heading:");
