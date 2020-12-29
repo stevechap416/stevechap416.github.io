@@ -35,6 +35,29 @@
      height: 2em;
    }
 
+   .backButton {
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     width: 100%;
+     height: 5em;
+     justify-content: center;
+     align-items: center;
+     z-index: 10;
+     display:none;
+   }
+
+   .backBtn{
+     padding: 0.25em;
+     border-radius: 4px;
+     border: none;
+     background: white;
+     color: black;
+     width: 4em;
+     height: 2em;
+
+   }
+
    .overlay{
      position: fixed;
      background-image:url("temp-overlay-center.png");
@@ -63,7 +86,7 @@
   <script>
   //So I can see in the console log if the updated version is running...
   console.log("*************")
-  console.log("Update 89")
+  console.log("Update 91")
   console.log("*************")
 
   //Multiple Trackers
@@ -72,16 +95,21 @@
   			var marker = this.el;
         var markerId = marker.id;
 
+        //Different parts of the page to manipulate
+        const cameraFeed = document.querySelector("#arjs-video");
+        const aframeScene = document.querySelector("#aframeScene");
+        const krPano = document.querySelector("#krpano");
+        const buttons = document.querySelector(".buttons");
+        const overlay = document.querySelector(".overlay");
+        const backButton = document.querySelector(".backButton");
+
   			marker.addEventListener('markerFound', function() {
 
   				console.log('markerFound', markerId);
 
           if (markerId == "anchor") {
             //window.open("https://dboxtest.s3.amazonaws.com/autogyro/tour.html?startscene=1&startactions=lookat(90,2.95,100,0,0)","_self");
-            const cameraFeed = document.querySelector("#arjs-video");
-            const aframeScene = document.querySelector("#aframeScene")
-            const krPano = document.querySelector("#krpano")
-            const buttons = document.querySelector(".buttons")
+
 
             //Turn off compass now.
             runCompass = false;
@@ -92,16 +120,16 @@
             aframeScene.style.display = "none";
             krPano.style.display = "block";
             buttons.style.display="none";
+            overlay.style.display="none";
+
+            backButton.style.display="flex";
 
             delete AFRAME.components['registerevents'];
 
 
         } else if (markerId == "anchor2") {
             //window.open("https://dboxtest.s3.amazonaws.com/autogyro/tour.html?startscene=1&startactions=lookat(90,2.95,100,0,0)","_self");
-            const cameraFeed = document.querySelector("#arjs-video");
-            const aframeScene = document.querySelector("#aframeScene")
-            const krPano = document.querySelector("#krpano")
-            const buttons = document.querySelector(".buttons")
+
 
             //Turn off compass now.
             runCompass = false;
@@ -112,6 +140,9 @@
             aframeScene.style.display = "none";
             krPano.style.display = "block";
             buttons.style.display="none";
+            overlay.style.display="none";
+
+            backButton.style.display="flex";
 
             delete AFRAME.components['registerevents'];
 
@@ -138,10 +169,13 @@
   <body style="margin: 0px; overflow: hidden;">
 
     <div class="buttons">
-      <button class="start-btn">Start compass</button>
+      <button class="startBtn">Start compass</button>
       <p id="compass-data">0</p>
     </div>
 
+    <div class="backButton">
+      <button class="backBtn">Back To Scan</button>
+    </div>
 
     <div class="overlay">
     </div>
@@ -169,7 +203,8 @@
 
   <script>
   //Compass Section
-  const startBtn = document.querySelector(".start-btn");
+  const startBtn = document.querySelector(".startBtn");
+  const backBtn = document.querySelector(".backBtn");
 
   let compass;
   let adjustment = -20; //For magnetic north adjustment to city grid etc.
@@ -187,7 +222,12 @@
   //Have to have a button somewhere to start the compass on iOS
   function init() {
     startBtn.addEventListener("click", startCompass);
+    backBtn.addEventListener("click", goBack);
     console.log("Init function started...")
+  }
+
+  function goBack() {
+    console.log("Go back...");
   }
 
   function startCompass() {
