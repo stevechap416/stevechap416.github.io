@@ -86,7 +86,7 @@
   <script>
   //So I can see in the console log if the updated version is running...
   console.log("*************")
-  console.log("Update 91")
+  console.log("Update 92")
   console.log("*************")
 
   //Multiple Trackers
@@ -96,12 +96,7 @@
         var markerId = marker.id;
 
         //Different parts of the page to manipulate
-        const cameraFeed = document.querySelector("#arjs-video");
-        const aframeScene = document.querySelector("#aframeScene");
-        const krPano = document.querySelector("#krpano");
-        const buttons = document.querySelector(".buttons");
-        const overlay = document.querySelector(".overlay");
-        const backButton = document.querySelector(".backButton");
+
 
   			marker.addEventListener('markerFound', function() {
 
@@ -109,7 +104,12 @@
 
           if (markerId == "anchor") {
             //window.open("https://dboxtest.s3.amazonaws.com/autogyro/tour.html?startscene=1&startactions=lookat(90,2.95,100,0,0)","_self");
-
+            const cameraFeed = document.querySelector("#arjs-video");
+            const aframeScene = document.querySelector("#aframeScene");
+            const krPano = document.querySelector("#krpano");
+            const buttons = document.querySelector(".buttons");
+            const overlay = document.querySelector(".overlay");
+            const backButton = document.querySelector(".backButton");
 
             //Turn off compass now.
             runCompass = false;
@@ -129,7 +129,12 @@
 
         } else if (markerId == "anchor2") {
             //window.open("https://dboxtest.s3.amazonaws.com/autogyro/tour.html?startscene=1&startactions=lookat(90,2.95,100,0,0)","_self");
-
+            const cameraFeed = document.querySelector("#arjs-video");
+            const aframeScene = document.querySelector("#aframeScene");
+            const krPano = document.querySelector("#krpano");
+            const buttons = document.querySelector(".buttons");
+            const overlay = document.querySelector(".overlay");
+            const backButton = document.querySelector(".backButton");
 
             //Turn off compass now.
             runCompass = false;
