@@ -130,11 +130,10 @@
   <script>
   //So I can see in the console log if the updated version is running...
   console.log("*************")
-  console.log("Update 118")
+  console.log("Update 119")
   console.log("*************")
 
-  const aframeText = document.querySelector(".a-dialog-text");
-  aframeText.innerHTML = "This virtual experience requires access to the device's motion sensors.";
+
 
   //Multiple Trackers
   AFRAME.registerComponent('registerevents', {
@@ -334,6 +333,8 @@ const compassDisplay = document.querySelector("#compass-data");
   }
 
   init();
+  const aframeText = document.querySelector(".a-dialog-text");
+  aframeText.innerHTML = "This virtual experience requires access to the device's motion sensors.";
 
   </script>
 
