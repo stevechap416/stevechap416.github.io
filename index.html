@@ -35,12 +35,17 @@
      height: 2em;
    }
 
+   .overlay{
+     position: absolute;
+     justify-content: center;
+     width:100%;
+     background-image:url("temp-overlay.png")
+   }
+
    #compass-data{
      font-family: sans-serif;
      color:white;
    }
-
-   a-scene{}
 
      #krpano {
        width:100%;
@@ -52,7 +57,7 @@
   <script>
   //So I can see in the console log if the updated version is running...
   console.log("*************")
-  console.log("Update 84")
+  console.log("Update 85")
   console.log("*************")
 
   //Multiple Trackers
@@ -129,6 +134,10 @@
     <div class="buttons">
       <button class="start-btn">Start compass</button>
       <p id="compass-data">0</p>
+    </div>
+
+
+    <div class="overlay">
     </div>
 
     <a-scene embedded arjs vr-mode-ui="enabled: false" id="aframeScene">
