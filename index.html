@@ -59,7 +59,7 @@
 
    .overlay{
      position: fixed;
-     background-image:url("temp-overlay-center.gif");
+     background-image:url("temp-overlay-center.png");
      background-repeat: no-repeat;
      top: 50%;
      left: 50%;
@@ -67,8 +67,15 @@
      transform: translate(-50%, -50%);
      width:375px;
      height:405px;
-
    }
+
+   @keyframes fadeIn {
+  from { opacity: .1; }
+}
+
+  .overlay {
+      animation: fadeIn 1s infinite alternate;
+  }
 
    #compass-data{
      font-family: sans-serif;
@@ -85,7 +92,7 @@
   <script>
   //So I can see in the console log if the updated version is running...
   console.log("*************")
-  console.log("Update 95")
+  console.log("Update 96")
   console.log("*************")
 
   //Multiple Trackers
