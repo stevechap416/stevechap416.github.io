@@ -306,7 +306,7 @@
 
   <script>
   //So I can see in the console log if the updated version is running...
-  var versionNumber = "V.0126";
+  var versionNumber = "V.0127";
   console.log("*************")
   console.log("Update " + versionNumber);
   console.log("*************")
@@ -400,10 +400,8 @@ const compassDisplay = document.querySelector("#compass-data");
 
   init();
 
-  const aframeText = document.querySelector(".a-dialog-text");
-  aframeText.innerHTML = "This virtual experience requires access to the device's motion sensors.";
-
   function detectOrientation() {
+    console.log("WHOAAAA")
     console.log(window.orientation);
 
     if (typeof window.onorientationchange != 'undefined') {
@@ -418,6 +416,11 @@ const compassDisplay = document.querySelector("#compass-data");
 
   detectOrientation();
   window.onorientationchange = detectOrientation;
+
+  const aframeText = document.querySelector(".a-dialog-text");
+  aframeText.innerHTML = "This virtual experience requires access to the device's motion sensors.";
+
+
 
   </script>
 
