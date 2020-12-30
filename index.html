@@ -159,15 +159,23 @@
        display:none;
      }
 
+     #versionNumber{
+       position: absolute;
+       bottom: 0px;
+       left: 0;
+       width: 100%;
+       justify-content: center;
+       align-items: center;
+       z-index: 10;
+       font-size:.25em;
+       color:gray;
+       opacity:.75;
+     }
 
 
 
   </style>
   <script>
-  //So I can see in the console log if the updated version is running...
-  console.log("*************")
-  console.log("Update 125")
-  console.log("*************")
 
 
 
@@ -270,8 +278,10 @@
     </div>
 
     <div class="overlay">
-
     </div>
+
+    <p id="versionNumber">
+    </p>
 
     <a-scene embedded arjs vr-mode-ui="enabled: false" id="aframeScene">
 
@@ -295,6 +305,16 @@
   </body>
 
   <script>
+  //So I can see in the console log if the updated version is running...
+  var versionNumber = "V.0126";
+  console.log("*************")
+  console.log("Update " + versionNumber);
+  console.log("*************")
+
+  const versioningBox = document.querySelector("#versionNumber");
+  versioningBox.innerHTML = versionNumber.toString();
+
+
   //Compass Section
   const startBtn = document.querySelector("#startBtn");
   const backBtn = document.querySelector(".backBtn");
@@ -384,7 +404,15 @@ const compassDisplay = document.querySelector("#compass-data");
   aframeText.innerHTML = "This virtual experience requires access to the device's motion sensors.";
 
   function detectOrientation() {
-    console.log(wind.orientation);
+    console.log(window.orientation);
+
+    if (typeof window.onorientationchange != 'undefined') {
+      if (window.orientation==0) { // portrait
+         console.log("To Portrait")
+      } else if (window.orientation==90 || window.orientation==-90) { // landscape
+         console.log("To Landscape")
+      }
+
   }
 
 
