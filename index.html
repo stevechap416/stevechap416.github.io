@@ -306,7 +306,7 @@
 
   <script>
   //So I can see in the console log if the updated version is running...
-  var versionNumber = "V.0129";
+  var versionNumber = "V.0130";
   console.log("*************")
   console.log("Update " + versionNumber);
   console.log("*************")
@@ -389,6 +389,10 @@ const compassDisplay = document.querySelector("#compass-data");
         finalHeading = finalHeading - 90;
       }
 
+      if (window.orientation == 180) {
+        finalHeading = finalHeading - 180;
+      }
+
       if (finalHeading > 360) {
         finalHeading = finalHeading - 360;
       }
@@ -409,9 +413,7 @@ const compassDisplay = document.querySelector("#compass-data");
   init();
 
   function detectOrientation() {
-    console.log("WHOAAAA")
     console.log(window.orientation);
-
     if (typeof window.onorientationchange != 'undefined') {
       if (window.orientation==0) { // portrait
          console.log("To Portrait")
@@ -420,16 +422,7 @@ const compassDisplay = document.querySelector("#compass-data");
       }
     }
   }
-
-
-  detectOrientation();
   window.onorientationchange = detectOrientation;
-
-  const aframeText = document.querySelector(".a-dialog-text");
-  aframeText.innerHTML = "This virtual experience requires access to the device's motion sensors.";
-
-
-
   </script>
 
 
