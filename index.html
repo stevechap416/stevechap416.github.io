@@ -85,14 +85,21 @@
    }
 
    .backBtn{
-     padding: 0.4em;
-     border-radius: 4px;
-     border: solid;
-     border-width: 3px;
+     border: 1px solid;
+     border-color:rgb(137, 127, 112);
      background: none;
-     color: black;
-     width: 4em;
-     height: 3em;
+     color: #fff;
+     width: 6em;
+     font-size:.875em;
+     letter-spacing: .125em;
+     cursor:pointer;
+     display:inline-block;
+     width: auto;
+     min-width:150px;
+     height:72px;
+     line-height:72px;
+     text-transform:uppercase;
+     text-align:center;
 
    }
 
@@ -159,7 +166,7 @@
   <script>
   //So I can see in the console log if the updated version is running...
   console.log("*************")
-  console.log("Update 120")
+  console.log("Update 121")
   console.log("*************")
 
 
@@ -250,7 +257,7 @@
   <body style="margin: 0px; overflow: hidden;">
 
     <div class="buttons">
-      <div class="startBtn flashing">Start</div>
+      <div id="startBtn" class="startBtn flashing">Start</div>
       <p id="compass-data">0</p>
     </div>
 
@@ -289,7 +296,7 @@
 
   <script>
   //Compass Section
-  const startBtn = document.querySelector(".startBtn");
+  const startBtn = document.querySelector("#startBtn");
   const backBtn = document.querySelector(".backBtn");
   const overlay = document.querySelector(".overlay");
   const blackout = document.querySelector(".blackout");
