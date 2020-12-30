@@ -306,7 +306,7 @@
 
   <script>
   //So I can see in the console log if the updated version is running...
-  var versionNumber = "V.0127";
+  var versionNumber = "V.0128";
   console.log("*************")
   console.log("Update " + versionNumber);
   console.log("*************")
@@ -380,6 +380,10 @@ const compassDisplay = document.querySelector("#compass-data");
       compass = e.webkitCompassHeading;
 
       finalHeading = compass + adjustment;
+
+      if (window.orientation == 90) {
+        finalHeading = finalHeading - 90;
+      }
 
       if (finalHeading > 360) {
         finalHeading = finalHeading - 360;
