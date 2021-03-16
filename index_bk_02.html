@@ -242,16 +242,7 @@
 
             delete AFRAME.components['registerevents'];
 
-        } else if (markerID == "anchorTest01") {
-
-        } else if (markerID == "anchorTest02") {
-
-        } else if (markerID == "anchorTest03") {
-
-        }
-
-
-        else {}
+        } else {}
 
   			});
 
@@ -300,15 +291,6 @@
       <a-marker preset='hiro' emitevents="true" id="anchor2" registerevents>
       </a-marker>
 
-      <a-marker preset='custom' type="pattern" url="Test_Pattern_01.patt" emitevents="true" id="anchorTest01" registerevents>
-      </a-marker>
-
-      <a-marker preset='custom' type="pattern" url="Test_Pattern_02.patt" emitevents="true" id="anchorTest02" registerevents>
-      </a-marker>
-
-      <a-marker preset='custom' type="pattern" url="Test_Pattern_03.patt" emitevents="true" id="anchorTest03" registerevents>
-      </a-marker>
-
      <a-entity camera></a-entity>
   </a-scene>
 
@@ -324,7 +306,7 @@
 
   <script>
   //So I can see in the console log if the updated version is running...
-  var versionNumber = "V.0131";
+  var versionNumber = "V.0130";
   console.log("*************")
   console.log("Update " + versionNumber);
   console.log("*************")
