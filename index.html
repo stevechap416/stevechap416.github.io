@@ -188,12 +188,16 @@
 
         //Different parts of the page to manipulate
 
-
+        //What to do when a marker is found
   			marker.addEventListener('markerFound', function() {
 
   				console.log('markerFound', markerId);
 
           if (markerId == "anchor") {
+
+            /*
+
+
             //window.open("https://dboxtest.s3.amazonaws.com/autogyro/tour.html?startscene=1&startactions=lookat(90,2.95,100,0,0)","_self");
             const cameraFeed = document.querySelector("#arjs-video");
             const aframeScene = document.querySelector("#aframeScene");
@@ -216,9 +220,14 @@
             backButton.style.display="flex";
 
             delete AFRAME.components['registerevents'];
+
+            */
 
 
         } else if (markerId == "anchor2") {
+
+          /*
+
             //window.open("https://dboxtest.s3.amazonaws.com/autogyro/tour.html?startscene=1&startactions=lookat(90,2.95,100,0,0)","_self");
             const cameraFeed = document.querySelector("#arjs-video");
             const aframeScene = document.querySelector("#aframeScene");
@@ -241,6 +250,8 @@
             backButton.style.display="flex";
 
             delete AFRAME.components['registerevents'];
+
+            */
 
         } else if (markerID == "anchorTest01") {
 
@@ -256,7 +267,7 @@
   			});
 
 
-
+        //When  a marker is lost
   			marker.addEventListener('markerLost', function() {
   				var markerId = marker.id;
   				console.log('markerLost', markerId);
@@ -294,19 +305,19 @@
 
     <a-scene embedded arjs vr-mode-ui="enabled: false" id="aframeScene">
 
-      <a-marker preset='custom' type="pattern" url="pattern-Main_111_Murray_3.patt" emitevents="true" id="anchor" registerevents >
+      <a-marker preset='custom' url="pattern-Main_111_Murray_3.patt" emitevents="true" id="anchor" registerevents >
       </a-marker>
 
       <a-marker preset='hiro' emitevents="true" id="anchor2" registerevents>
       </a-marker>
 
-      <a-marker preset='custom' type="pattern" url="Test_Pattern_01.patt" emitevents="true" id="anchorTest01" registerevents>
+      <a-marker preset='custom' url="Test_Pattern_01.patt" emitevents="true" id="anchorTest01" registerevents>
       </a-marker>
 
-      <a-marker preset='custom' type="pattern" url="Test_Pattern_02.patt" emitevents="true" id="anchorTest02" registerevents>
+      <a-marker preset='custom' url="Test_Pattern_02.patt" emitevents="true" id="anchorTest02" registerevents>
       </a-marker>
 
-      <a-marker preset='custom' type="pattern" url="Test_Pattern_03.patt" emitevents="true" id="anchorTest03" registerevents>
+      <a-marker preset='custom' url="Test_Pattern_03.patt" emitevents="true" id="anchorTest03" registerevents>
       </a-marker>
 
      <a-entity camera></a-entity>
@@ -324,7 +335,7 @@
 
   <script>
   //So I can see in the console log if the updated version is running...
-  var versionNumber = "V.0131";
+  var versionNumber = "V.0132";
   console.log("*************")
   console.log("Update " + versionNumber);
   console.log("*************")
