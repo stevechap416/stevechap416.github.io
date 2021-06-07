@@ -53,7 +53,7 @@ function gotPoses(results) {
 }
 
 function modelReady() {
-  console.log("model ready");
+  console.log("Model ready!");
   poseNet.multiPose(video);
 }
 
