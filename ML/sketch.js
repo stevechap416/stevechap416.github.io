@@ -9,7 +9,7 @@ PoseNet using p5.js
 === */
 /* eslint-disable */
 
-console.log("V1");
+console.log("V2");
 
 // Grab elements, create settings, etc.
 var video = document.getElementById("video");
@@ -49,13 +49,14 @@ poseNet.on("pose", gotPoses);
 // A function that gets called every time there's an update from the model
 function gotPoses(results) {
   poses = results;
-    console.log(poses[0].pose);
 }
 
 function modelReady() {
   console.log("Model ready!");
-  poseNet.multiPose(video);
+  poseNet.singlePose(video);
 }
+
+//Pose Left Wrist 9 + Right Wrist 10
 
 // A function to draw ellipses over the detected keypoints
 function drawKeypoints() {
@@ -91,4 +92,8 @@ function drawSkeleton() {
     }
   }
 
+}
+
+function getInfo() {
+    console.log(poses[0].pose);
 }
