@@ -47,6 +47,7 @@ poseNet.on("pose", gotPoses);
 // A function that gets called every time there's an update from the model
 function gotPoses(results) {
   poses = results;
+    console.log(poses[0].pose);
 }
 
 function modelReady() {
@@ -69,6 +70,8 @@ function drawKeypoints() {
       }
     }
   }
+
+
 }
 
 // A function to draw the skeletons
@@ -85,4 +88,5 @@ function drawSkeleton() {
       ctx.stroke();
     }
   }
+
 }
