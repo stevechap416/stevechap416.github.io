@@ -9,6 +9,8 @@ PoseNet using p5.js
 === */
 /* eslint-disable */
 
+console.log("V1");
+
 // Grab elements, create settings, etc.
 var video = document.getElementById("video");
 var canvas = document.getElementById("canvas");
