@@ -1,19 +1,10 @@
-// Copyright (c) 2019 ml5
-//
-// This software is released under the MIT License.
-// https://opensource.org/licenses/MIT
-
-/* ===
-ml5 Example
-PoseNet using p5.js
-=== */
-/* eslint-disable */
-
 
 /*
 X + Y Coords come from the top left
 Pose Left Wrist 9 + Right Wrist 10
 Confidence, I assume, is confident the model is that the pose point is present.
+
+The X+Y coords of objects comes form the top left corner of their bounding box
 
 Issues/Concerns:
 Object persistance/Object coverage.
@@ -28,6 +19,7 @@ console.log("V4");
 var video = document.getElementById("video");
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
+var ctx2 = canvas.getContext("2d");
 
 // The detected positions will be inside an array
 let poses = [];
@@ -97,31 +89,28 @@ function detect() {
 
     if(objects){
       draw();
-      drawSkeleton();
-      drawKeypoints();
+      //drawSkeleton();
+    //  drawKeypoints();
     }
-
-    detect();
+    draw();
+   //detect();
   });
 }
 
 function draw(){
   // Clear part of the canvas
-  ctx.fillStyle = "#000000"
-  ctx.fillRect(0,0, width, height);
 
-  ctx.drawImage(video, 0, 0);
   for (let i = 0; i < objects.length; i += 1) {
 
-    ctx.font = "16px Arial";
-    ctx.fillStyle = "green";
-    ctx.fillText(objects[i].label, objects[i].x + 4, objects[i].y + 16);
+    ctx2.font = "16px Arial";
+    ctx2.fillStyle = "green";
+    ctx2.fillText(objects[i].label, objects[i].x + 4, objects[i].y + 16);
 
-    ctx.beginPath();
-    ctx.rect(objects[i].x, objects[i].y, objects[i].width, objects[i].height);
-    ctx.strokeStyle = "green";
-    ctx.stroke();
-    ctx.closePath();
+    ctx2.beginPath();
+    ctx2.rect(objects[i].x, objects[i].y, objects[i].width, objects[i].height);
+    ctx2.strokeStyle = "green";
+    ctx2.stroke();
+    ctx2.closePath();
   }
 }
 
@@ -161,6 +150,8 @@ function drawSkeleton() {
     }
   }
 
+
+
 }
 
 function inRange(x, min, max) {
@@ -171,24 +162,53 @@ function getInfo() {
         //console.log(poses);
 
     //console.log(poses[0].pose);
-  console.log(objects[0]);
-    console.log(poses[0].pose.leftWrist.x);
-    console.log(poses[0].pose.leftWrist.y);
-    console.log(objects[0].x);
+  console.log(objects);
 
-
-
+  buffer = 10;
 
   handLocations = [
             leftWristX = poses[0].pose.leftWrist.x,
-            leftWristY = poses[0].pose.rightWrist.y,
+            leftWristY = poses[0].pose.leftWrist.y,
 
-            rightWristX = poses[0].pose.leftWrist.x,
+            rightWristX = poses[0].pose.rightWrist.x,
             rightWristY = poses[0].pose.rightWrist.y
   ]
+  console.log(rightWristX);
+  console.log(rightWristY);
+
+    for (let b = 0; b < objects.length; b+=1 ) {
 
 
-  console.log(inRange(leftWristX,objects[0].x - 20,objects[0].x + 20));
+
+      if (objects[b].label == "person") {} else {
+
+        objectXMin = objects[b].x
+        objectXMax = objects[b].x + objects[b].width
+
+        objectYMax = objects[b].y + objects[b].height
+        objectYMin = objects[b].y
+
+
+        if ((inRange(leftWristX,objectXMin - buffer,objectXMax + buffer) == true) &&
+            (inRange(leftWristY,objectYMin - buffer,objectYMax + buffer) == true) )
+         {
+          console.log("Left Hand Touching on " + objects[b].label);
+          console.log(leftWristX);
+          console.log(leftWristY);
+        }
+
+        if ((inRange(rightWristX,objectXMin - buffer,objectXMax + buffer) == true) &&
+            (inRange(rightWristY,objectYMin - buffer,objectYMax + buffer) == true) )
+         {
+          console.log("Right Hand Touching on " + objects[b].label);
+          console.log(rightWristX);
+          console.log(rightWristY);
+        }
+
+      }
+
+    }
+
 
 
 
